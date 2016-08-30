@@ -1,0 +1,220 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+    padding-bottom: 40px;
+    color: #5a5a5a;
+    background-color: #f5f5f5;
+}
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+    padding-right: 0;
+    padding-left: 0;
+}
+.navbar-wrapper .navbar {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+    width: auto;
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    height: 550px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 550px;
+    background-color: #777;
+    margin-bottom: 20px;
+}
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    min-width: 100%;
+    height: 550px;
+}
+
+/* OVERVIEW
+-------------------------------------------------- */
+
+.panel-default {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.overview.col-md-4 {
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+.overview h2 {
+    font-weight: normal;
+}
+.overview .col-lg-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.nest-gauges {
+    height: 250px;
+    padding-left: 5%; 
+}
+
+.nest-day {
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+}
+
+#last-refresh {
+    text-align: center;
+}
+
+/* ENERGY
+-------------------------------------------------- */
+
+#energy {
+}
+
+.energy.col-md-4 {
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.energy h2 {
+    font-weight: normal;
+}
+
+.energy .col-lg-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#nest-leaf {
+    height: 250px;
+}
+
+#reportrange {
+    background: #fff; 
+    cursor: pointer; 
+    padding: 5px 10px; 
+    width: 100%
+}
+
+#leaf-number {
+    height: 50px;
+    text-align: right;
+    margin: 20px 0 30px 0;
+    padding-right: 5px;
+    line-height: 50px;
+}
+
+#leaf-div {
+    margin: 25px 0 30px 0;
+    padding-left: 5px;
+    height: 50px;
+}
+
+#leaf-img {
+    height: 80%;
+}
+
+.text-box {
+    font-size: 18px; 
+}
+
+.data-right {
+    font-size: 42px; 
+}
+
+.data-center {
+    margin: 10px auto 0 auto;
+    font-size: 42px;
+    text-align: center;
+    height: 50px;
+}
+
+#heat-number {
+    height: 50px;
+    margin: 20px 0 30px 0;
+    text-align: center;
+    color: #FB7104;
+    font-size: 42px;
+}
+
+.img-head {
+    margin: 10px auto 0 auto;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+    /* Navbar positioning foo */
+    .navbar-wrapper {
+        margin-top: 20px;
+    }
+    .navbar-wrapper .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .navbar-wrapper .navbar {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /* The navbar becomes detached from the top, so we round the corners */
+    .navbar-wrapper .navbar {
+        border-radius: 4px;
+    }
+
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 992px) {
+    .featurette-heading {
+        margin-top: 120px;
+    }
+}

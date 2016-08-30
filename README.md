@@ -4,11 +4,9 @@ This project try to fill the biggest Nest Thermostat gap, data history using Pyt
 
 It allow you to browse your Nest thermostat history data with some pretty charts, analyze your consumption and keep a eye on your environment.
 
-
-
 Feel free to create a pull request, open an issue or fork it !
 
-## Feature
+## Features
 
 * Polls Nest API to fetch thermostat data
 * Stores each hour a selected data in local MySQL database
@@ -23,15 +21,111 @@ Feel free to create a pull request, open an issue or fork it !
 
 ## Installation
 
-__WIP__
+### Prerequisite
 
-## Usage
+* [Nest](https://nest.com) Account
+* [OpenWeatherMap](http://openweathermap.org/) API Key
 
-__WIP__
+### Setup
 
-## Known Issues
+_This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaDB database engine._
 
-You can find known issues in the ``Issues`` tab.
+1. Update your package lists and any pending updates before starting:
+```
+sudo apt-get update
+```
+```
+sudo apt-get upgrade -y
+```
+
+2. Install required packages:
+```
+sudo apt-get install nginx php5-fpm php5-mysql mariadb-server mariadb-client git
+```
+
+3. Clone the repository:
+```
+cd /opt && git clone git@github.com:gchenuet/nest-datagraph.git
+```
+
+4. Setup NGinx Virtual Host:
+```
+sudo cp /opt/nest-datagraph/config/nginx/nest-datagraph.conf /etc/nginx/sites-available/
+```
+```
+sudo ln -s /etc/nginx/sites-available/nest-datagraph.conf /etc/nginx/sites-enabled/nest-datagraph.conf
+```
+  * Modify the `server_name` parameter with your FQDN in `nest-datagraph.conf`
+
+    ```
+    vim /etc/nginx/sites-enabled/nest-datagraph.conf
+    ```
+    * Reload NGinx
+    ```
+    sudo service nginx reload
+    ```
+5. Create the Database:
+
+  * Create a new MySQL user:
+  ```
+  CREATE USER '[username]'@'localhost' IDENTIFIED BY '[password]';
+  ```
+  ```
+  GRANT ALL PRIVILEGES ON * . * TO '[username]'@'localhost';
+  ```
+  * Create the database and grant permissions:
+  ```
+  CREATE DATABASE nest_datagraph;
+  ```
+  ```
+  GRANT ALL PRIVILEGES ON nest_datagraph.* TO '[username]'@'localhost';
+  ```
+  * Import the DB schema:
+  ```
+  sudo mysql -h <HOST> -u <USER> -p<PASSWORD> nest_datagraph < /opt/nest-datagraph/config/db/nest-datagraph.sql
+  ```
+
+6. Setup Nest DataGraph backend
+```
+vi /opt/nest-datagraph/backend/poller.py
+```
+  * Fill in variables with your parameters:         
+    * `OWM` - OpenWeatherMap API Key
+    * `OWM_CITY` - Your city (Ex: 'Paris,fr')
+    * `NEST_ID` - Nest login
+    * `NEST_PWD` - Nest password
+    * `NEST_SN` - Nest Thermostat serial number
+    * `DB_USER` - MySQL user
+    * `DB_PWD` - MySQL password
+    * `DB_HOST` = IP or FQDN of your MySQL server
+    * `DB_NAME` = Database name
+
+    * Open the crontab and add the line at the end of the file:
+    ```
+    crontab -e
+    ```
+    ```
+    0   *   *   *   *   /usr/bin/python /opt/nest_datagraph/backend/poller.py
+    ```
+
+7. Setup Nest DataGraph frontend
+```
+vim /opt/nest-datagraph/frontend/php/params.ini
+```
+  * Fill in variables with your parameters:
+    * `timezone` - Your timezone (Ex: 'Europe/Paris')
+    * `nest_username` - Nest login
+    * `nest_password` - Nest password
+    * `mysql_hostname` = IP or FQDN of your MySQL server
+    * `mysql_database` = Database name
+    * `mysql_username` = MySQL user
+    * `mysql_password` = MySQL password
+
+8. Enjoy (and wait a hour) !
+
+## Features & Known Issues
+
+You can find and post new features or known issues in the ``Issues`` tab.
 
 ## Contributing     
 
