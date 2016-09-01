@@ -157,6 +157,6 @@ You can find and post new features or known issues in the ``Issues`` tab.
 ## Acknowledgements
 
 * Scott M Baker, http://www.smbaker.com/ for https://github.com/smbaker/pynest
-* Andy Blyler, http://andyblyler.com/ for https://github.com/ablyler/nest-php-api
+* Guillaume Boudreau, https://www.pommepause.com for https://github.com/gboudreau/nest-api
 * Google for Google Chart, https://developers.google.com/chart/
 * Nest for images and logos, https://nest.com/fr/
