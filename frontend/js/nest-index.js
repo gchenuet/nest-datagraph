@@ -79,11 +79,10 @@ function dayTempChart() {
 
     var options = {
         title: 'Temperature History',
-        curveType: 'function',
         vAxis: { title: 'Temperature (Celsius)'},
         hAxis: { title: 'Date',format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },
-        colors: ['#00afd8', '#7b858e', '#E54725']
+        colors: ['#7b858e', '#00afd8', '#E54725']
     };
 
     var data = new google.visualization.DataTable(jsonData);
@@ -101,7 +100,6 @@ function dayHumChart() {
 
     var options = {
         title: 'Humidity History',
-        curveType: 'function',
         vAxis: { title: 'Humidity (%)'},
         hAxis: { title: 'Date', format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },

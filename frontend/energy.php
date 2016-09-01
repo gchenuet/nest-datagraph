@@ -23,6 +23,7 @@
     <body>
         <?php
         include('php/nestFunctions.php');
+        $ini = parse_ini_file("php/params.ini", true);
         $lastRecord = json_decode(getLastRecord());
         ?>
         <!-- NAVBAR -->
@@ -43,6 +44,11 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="index.php">Overview</a></li>
                                 <li class="active"><a href="energy.php">Energy</a></li>
+                                <?php
+	                                if ($ini['common']['protect'] == "true") {
+		                                echo "<li><a href='protect.php'>Protect</a></li>";
+	                                }
+	                            ?>
                             </ul>
                         </div>
                     </div>

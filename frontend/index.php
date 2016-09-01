@@ -17,6 +17,11 @@
         <script type="text/javascript" src="js/nest-index.js"></script>
     </head>
     <body>
+	    <?php
+        include('php/nestFunctions.php');
+        $ini = parse_ini_file("php/params.ini", true);
+        $lastRecord = json_decode(getLastRecord());
+        ?>
         <!-- NAVBAR -->
         <div class="navbar-wrapper">
             <div class="container">
@@ -35,6 +40,11 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="index.php">Overview</a></li>
                                 <li><a href="energy.php">Energy</a></li>
+                                <?php
+	                                if ($ini['common']['protect'] == "true") {
+		                                echo "<li><a href='protect.php'>Protect</a></li>";
+	                                }
+	                            ?>
                             </ul>
                         </div>
                     </div>
@@ -62,8 +72,6 @@
         <!-- Overview -->
         <div class="container overview" id="overview">
             <?php
-            include('php/nestFunctions.php');
-            $lastRecord = json_decode(getLastRecord());
             if ($lastRecord[0]->nest_heat_state == 0) {
                 echo "<div class='alert alert-info' role='alert'>Thermostat is currently <strong>IDLE</strong></div>";
             } else {

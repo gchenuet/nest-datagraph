@@ -41,7 +41,6 @@ function heatingChart() {
     var options = {
         hAxis: {title: 'Days', format: 'MMM d, y'},
         vAxis: {title: 'Hours', minValue: 0, maxValue: 24, gridlines: {count: -1}, viewWindow: {min: 1},},
-        //colors: ['#C6455B', '#9BC645'],
         colors: ['#E54725', '#9BC645'],
         isStacked: true,
         bar: {groupWidth: "20"},
@@ -82,7 +81,6 @@ function tempChart() {
 
     var options = {
         title: 'Temperature History',
-        curveType: 'function',
         vAxis: { title: 'Temperature (Celsius)'},
         hAxis: { title: 'Date',format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },
@@ -104,7 +102,6 @@ function humChart() {
 
     var options = {
         title: 'Humidity History',
-        curveType: 'function',
         vAxis: { title: 'Humidity (%)'},
         hAxis: { title: 'Date', format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },
