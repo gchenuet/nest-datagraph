@@ -9,15 +9,14 @@ Feel free to create a pull request, open an issue or fork it !
 ## Features
 
 * Polls Nest API to fetch thermostat data
-* Stores each hour a selected data in local MySQL database
-* Generates Google Chart with your consumption
-* Select a specific date range
+* Consumptions are stored in a local database
+* Generates (Google) Chart with your consumptions
+* Select specific date ranges
 * Hover over charts to get the exact timestamp and temperature
+* Verify your Nest Protect devices state
 * And more !
 
-![Overview Panel](https://github.com/gchenuet/nest-datagraph/raw/master/README/overview.png "Overview Panel")   
-
-![Energy Panel](https://github.com/gchenuet/nest-datagraph/raw/master/README/energy.png "Energy Panel")
+![Overview](https://github.com/gchenuet/nest-datagraph/raw/master/README/nest-datagraph.jpg "Overview")   
 
 ## Installation
 
@@ -125,6 +124,7 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 			
 * Fill in variables with your parameters:
     * `timezone` - Your timezone (Ex: 'Europe/Paris')
+    * `protect` - Set to 'true' if you have one or more Nest Protect device
     * `nest_username` - Nest login
     * `nest_password` - Nest password
     * `mysql_hostname` = IP or FQDN of your MySQL server
