@@ -41,23 +41,21 @@
                                 <li class="active"><a href="index.php">Overview</a></li>
                                 <li><a href="energy.php">Energy</a></li>
                                 <?php
-	                                if ($ini['common']['protect'] == "true") {
-		                                echo "<li><a href='protect.php'>Protect</a></li>";
-	                                }
+	                            if ($ini['common']['protect'] == "true") {
+		                            echo "<li><a href='protect.php'>Protect</a></li>";
+	                            }
 	                            ?>
                             </ul>
                         </div>
                     </div>
                 </nav>
-
             </div>
         </div>
         <!-- /.Navbar -->
         <!-- Carousel -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="pull-right" src="images/nest_background_1.jpg" alt="Nest - Home Report">
+                <div class="item active" id="carousel-index">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Welcome Home !</h1>

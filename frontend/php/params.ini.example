@@ -1,6 +1,9 @@
 [common]
 timezone = "Europe/Paris"
 
+# Set "true"  if you have one or more Nest Protect smoke detector
+protect = "false"
+
 [nest]
 nest_username = ""
 nest_password = ""

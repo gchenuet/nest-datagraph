@@ -65,7 +65,28 @@ body {
     height: 550px;
 }
 
-/* OVERVIEW
+#carousel-index {	  
+    background-image:url('../images/nest_bg2.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+	background-position:50% 50%;
+}
+
+#carousel-energy {	  
+    background-image:url('../images/nest_bg3.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+	background-position:50% 50%;
+}
+
+#carousel-protect {	  
+    background-image:url('../images/nest_bg5.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+	background-position:50% 50%;
+}
+
+/* OVERVIEW CSS
 -------------------------------------------------- */
 
 .panel-default {
@@ -101,11 +122,8 @@ body {
     text-align: center;
 }
 
-/* ENERGY
+/* ENERGY CSS
 -------------------------------------------------- */
-
-#energy {
-}
 
 .energy.col-md-4 {
     margin-bottom: 20px;
@@ -120,6 +138,10 @@ body {
 .energy .col-lg-4 p {
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.panel-values {
+	color: #333;
 }
 
 #nest-leaf {
@@ -163,7 +185,7 @@ body {
     margin: 10px auto 0 auto;
     font-size: 42px;
     text-align: center;
-    height: 50px;
+    height: 100px;
 }
 
 #heat-number {
@@ -176,8 +198,46 @@ body {
 
 .img-head {
     margin: 10px auto 0 auto;
+    height: 70px;
 }
 
+.desc-value {
+	font-size: 20px;
+	color: #b2b2b2;
+}
+
+/* PROTECT CSS
+-------------------------------------------------- */
+
+#img-protect {
+	height: 30%;
+	width: 30%;
+	margin-bottom: 20px;
+}
+
+.protect-values {
+	margin: 10px auto 10px auto;
+    font-size: 22px;
+    text-align: center;
+}
+
+.glyphicon-remove-circle {
+	color: #E54725;
+	margin-left: 15px;
+}
+
+.glyphicon-ok-circle {
+	color: #9BC645;
+	margin-left: 15px;
+}
+
+.glyphicon-heart-empty {
+	color: #E54725;
+}
+
+#protect-row {
+	margin-top: 25px;
+}
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
