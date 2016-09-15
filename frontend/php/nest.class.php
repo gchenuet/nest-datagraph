@@ -549,6 +549,40 @@ class Nest {
         }
         return $devices_serials;
     }
+    
+        public function getProtectDevices($type=DEVICE_TYPE_PROTECT) {
+	        $this->prepareForGet();
+			$this->getStatus();
+			$structures = (array) $this->last_status->structure;
+			$results = array();
+			$topaz = isset($this->last_status->topaz) ? $this->last_status->topaz : array();
+			foreach ($structures as $struct_id => $structure) {
+					$results["structure"][] = array('id' => $struct_id,
+													'name' => $structure->name,
+					 								'address' => !empty($structure->street_address) ? $structure->street_address : NULL,
+					 								'city' => $structure->location,
+					 								'postal_code' => $structure->postal_code,
+					 								'country' => $structure->country_code);
+			}
+			foreach ($topaz as $protect) {
+				foreach ($structures as $struct_id => $structure) {
+					if ($protect->structure_id == $struct_id) {
+						$struct_protect = $structure->name;
+					}
+				}
+	            $results["protect"][] = array('sn' => $protect->serial_number, 
+    	            				'name' => isset($this->where_map[$protect->spoken_where_id]) ? $this->where_map[$protect->spoken_where_id] : $protect->spoken_where_id, 
+									'description' => empty($protect->description) ? "" : $protect->description,
+									'location' => isset($struct_protect) ? $struct_protect : $protect->structure_id,
+									'structure' => $protect->structure_id,
+									'smoke_status' => $protect->smoke_status,
+									'co_status' => $protect->co_status,
+									'battery_status' => $protect->battery_health_state,
+									'wifi_status' => isset($protect->wifi_ip_address) ? true : false
+									);
+            	}
+			return json_encode($results, JSON_PRETTY_PRINT);
+        }
 
     private function getDefaultSerial($serial_number) {
         if (empty($serial_number)) {

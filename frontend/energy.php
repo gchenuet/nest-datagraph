@@ -60,8 +60,7 @@
         <!-- Carousel -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="pull-right" src="images/nest_background_2.jpg" alt="Energy Panel">
+                <div class="item active" id="carousel-energy">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Energy Panel</h1>
@@ -108,8 +107,7 @@
             </div> <!-- /.panel -->
             <div class="row">
                 <div class="col-md-6">
-                    <div class="panel panel-default"> <!-- Panel -->
-                        <div class="panel-heading"> <h3 class="panel-title">Heating Time <small> (In hours)</small></h3></div>
+                    <div class="panel panel-default panel-values"> <!-- Panel -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -117,14 +115,14 @@
                                 </div>
                                 <div class="col-md-12 data-center">
                                     <p><strong><span id="heating-value"></span></strong></p>
+                                    <p class="desc-value">Heating hours</p>
                                 </div>
                             </div>
                         </div>
                     </div> <!-- /.panel -->
                 </div>
                 <div class="col-md-6">
-                    <div class="panel panel-default"> <!-- Panel -->
-                        <div class="panel-heading"> <h3 class="panel-title">Leafs</h3></div>
+                    <div class="panel panel-default panel-values"> <!-- Panel -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -132,6 +130,7 @@
                                 </div>
                                 <div class="col-md-12 data-center">
                                     <p><strong><span id="leaf-value"></span></strong></p>
+                                    <p class="desc-value">Nest Leafs</p>
                                 </div>
                             </div>
                         </div>
@@ -148,8 +147,7 @@
             </div> <!-- /.panel -->
             <div class="row">
                 <div class="col-md-6">
-                    <div class="panel panel-default"> <!-- Panel -->
-                        <div class="panel-heading"> <h3 class="panel-title">At Home<small> (In hours)</small></h3></div>
+                    <div class="panel panel-default panel-values"> <!-- Panel -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -157,14 +155,14 @@
                                 </div>
                                 <div class="col-md-12 data-center">
                                     <p><strong><span id="home-value"></span></strong></p>
+                                    <p class="desc-value">Presence hours</p>
                                 </div>
                             </div>
                         </div>
                     </div> <!-- /.panel -->
                 </div>
                 <div class="col-md-6">
-                    <div class="panel panel-default"> <!-- Panel -->
-                        <div class="panel-heading"> <h3 class="panel-title">Away<small> (In hours)</small></h3></div>
+                    <div class="panel panel-default panel-values"> <!-- Panel -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -172,6 +170,7 @@
                                 </div>
                                 <div class="col-md-12 data-center">
                                     <p><strong><span id="away-value"></span></strong></p>
+                                    <p class="desc-value">Absence hours / Off</p>
                                 </div>
                             </div>
                         </div>
