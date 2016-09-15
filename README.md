@@ -9,7 +9,7 @@ Feel free to create a pull request, open an issue or fork it !
 ## Features
 
 * Polls Nest API to fetch thermostat data
-* Consumptions are stored in a local database
+* Consumptions data are stored in a local database
 * Generates (Google) Chart with your consumptions
 * Select specific date ranges
 * Hover over charts to get the exact timestamp and temperature
@@ -159,4 +159,4 @@ You can find and post new features or known issues in the ``Issues`` tab.
 * Scott M Baker, http://www.smbaker.com/ for https://github.com/smbaker/pynest
 * Guillaume Boudreau, https://www.pommepause.com for https://github.com/gboudreau/nest-api
 * Google for Google Chart, https://developers.google.com/chart/
-* Nest for images and logos, https://nest.com/fr/
+* Nest for images and logos, https://nest.com
