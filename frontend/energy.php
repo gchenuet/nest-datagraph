@@ -89,6 +89,18 @@
                     <div class="row">
                         <div id="nest-temp" class="col-md-12 nest-day"></div>
                     </div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Options <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a id="TempFullAll">All</a></li>
+    						<li role="separator" class="divider"></li>
+							<li><a id="TempFullTarget">Hide Target Temperature</a></li>
+							<li><a id="TempFullInt">Hide Interior Temperature</a></li>
+							<li><a id="TempFullExt">Hide Exterior Temperature</a></li>
+  						</ul>
+					</div>
                 </div>
             </div> <!-- /.panel -->
             <div class="panel panel-default"> <!-- Leaf Panel -->
@@ -97,6 +109,18 @@
                     <div class="row">
                         <div id="nest-hum" class="col-md-12 nest-day"></div>
                     </div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Options <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a id="HumFullAll">All</a></li>
+    						<li role="separator" class="divider"></li>
+							<li><a id="HumFullTarget">Hide Target Humidity</a></li>
+							<li><a id="HumFullInt">Hide Interior Humidity</a></li>
+							<li><a id="HumFullExt">Hide Exterior Humidity</a></li>
+  						</ul>
+					</div>
                 </div>
             </div> <!-- /.panel -->
             <div class="panel panel-default"> <!-- Panel -->

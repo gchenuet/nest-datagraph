@@ -91,6 +91,40 @@ function tempChart() {
     var chart = new google.visualization.LineChart(document.getElementById('nest-temp'));
 
     chart.draw(data, options);
+    
+        
+    var TempFullTarget = document.getElementById("TempFullTarget");
+	TempFullTarget.onclick = function()
+	{
+      view = new google.visualization.DataView(data);
+      view.hideColumns([1]); 
+      chart.draw(view, options);
+   	}
+
+    var TempFullInt = document.getElementById("TempFullInt");
+	TempFullInt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([2]); 
+		chart.draw(view, options);
+   }
+ 
+    var TempFullExt = document.getElementById("TempFullExt");
+	TempFullExt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([3]); 
+		chart.draw(view, options);
+   }
+
+    var TempFullAll = document.getElementById("TempFullAll");
+	TempFullAll.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		chart.draw(view, options);
+   }
+
+
 }
 
 function humChart() {
@@ -112,6 +146,38 @@ function humChart() {
     var chart = new google.visualization.LineChart(document.getElementById('nest-hum'));
 
     chart.draw(data, options);
+    
+        var HumFullTarget = document.getElementById("HumFullTarget");
+	HumFullTarget.onclick = function()
+	{
+      view = new google.visualization.DataView(data);
+      view.hideColumns([1]); 
+      chart.draw(view, options);
+   	}
+
+    var HumFullInt = document.getElementById("HumFullInt");
+	HumFullInt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([2]); 
+		chart.draw(view, options);
+   }
+ 
+    var HumFullExt = document.getElementById("HumFullExt");
+	HumFullExt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([3]); 
+		chart.draw(view, options);
+   }
+
+    var HumFullAll = document.getElementById("HumFullAll");
+	HumFullAll.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		chart.draw(view, options);
+   }
+
 }
 
 function updateData() {

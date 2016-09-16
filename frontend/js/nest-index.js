@@ -89,6 +89,38 @@ function dayTempChart() {
     var chart = new google.visualization.LineChart(document.getElementById('nest-daytemp'));
 
     chart.draw(data, options);
+    
+    var TempDayTarget = document.getElementById("TempDayTarget");
+	TempDayTarget.onclick = function()
+	{
+      view = new google.visualization.DataView(data);
+      view.hideColumns([1]); 
+      chart.draw(view, options);
+   	}
+
+    var TempDayInt = document.getElementById("TempDayInt");
+	TempDayInt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([2]); 
+		chart.draw(view, options);
+   }
+ 
+    var TempDayExt = document.getElementById("TempDayExt");
+	TempDayExt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([3]); 
+		chart.draw(view, options);
+   }
+
+    var TempDayAll = document.getElementById("TempDayAll");
+	TempDayAll.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		chart.draw(view, options);
+   }
+
 }
 
 function dayHumChart() {
@@ -110,4 +142,37 @@ function dayHumChart() {
     var chart = new google.visualization.LineChart(document.getElementById('nest-dayhum'));
 
     chart.draw(data, options);
+    
+    var HumDayTarget = document.getElementById("HumDayTarget");
+	HumDayTarget.onclick = function()
+	{
+      view = new google.visualization.DataView(data);
+      view.hideColumns([1]); 
+      chart.draw(view, options);
+   	}
+
+    var HumDayInt = document.getElementById("HumDayInt");
+	HumDayInt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([2]); 
+		chart.draw(view, options);
+   }
+ 
+    var HumDayExt = document.getElementById("HumDayExt");
+	HumDayExt.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		view.hideColumns([3]); 
+		chart.draw(view, options);
+   }
+
+    var HumDayAll = document.getElementById("HumDayAll");
+	HumDayAll.onclick = function()
+	{
+		view = new google.visualization.DataView(data);
+		chart.draw(view, options);
+   }
+
+
 }
