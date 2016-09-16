@@ -93,9 +93,9 @@ function dayTempChart() {
     var TempDayTarget = document.getElementById("TempDayTarget");
 	TempDayTarget.onclick = function()
 	{
-      view = new google.visualization.DataView(data);
-      view.hideColumns([1]); 
-      chart.draw(view, options);
+    	view = new google.visualization.DataView(data);
+		view.hideColumns([1]); 
+		chart.draw(view, options);
    	}
 
     var TempDayInt = document.getElementById("TempDayInt");
@@ -146,9 +146,9 @@ function dayHumChart() {
     var HumDayTarget = document.getElementById("HumDayTarget");
 	HumDayTarget.onclick = function()
 	{
-      view = new google.visualization.DataView(data);
-      view.hideColumns([1]); 
-      chart.draw(view, options);
+    	view = new google.visualization.DataView(data);
+		view.hideColumns([1]); 
+		chart.draw(view, options);
    	}
 
     var HumDayInt = document.getElementById("HumDayInt");

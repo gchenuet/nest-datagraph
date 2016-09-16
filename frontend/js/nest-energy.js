@@ -96,9 +96,9 @@ function tempChart() {
     var TempFullTarget = document.getElementById("TempFullTarget");
 	TempFullTarget.onclick = function()
 	{
-      view = new google.visualization.DataView(data);
-      view.hideColumns([1]); 
-      chart.draw(view, options);
+    	view = new google.visualization.DataView(data);
+		view.hideColumns([1]); 
+		chart.draw(view, options);
    	}
 
     var TempFullInt = document.getElementById("TempFullInt");
@@ -147,12 +147,12 @@ function humChart() {
 
     chart.draw(data, options);
     
-        var HumFullTarget = document.getElementById("HumFullTarget");
+    var HumFullTarget = document.getElementById("HumFullTarget");
 	HumFullTarget.onclick = function()
 	{
-      view = new google.visualization.DataView(data);
-      view.hideColumns([1]); 
-      chart.draw(view, options);
+     	view = new google.visualization.DataView(data);
+	  	view.hideColumns([1]); 
+	  	chart.draw(view, options);
    	}
 
     var HumFullInt = document.getElementById("HumFullInt");
