@@ -60,7 +60,7 @@
                         <div class="carousel-caption">
                             <h1>Welcome Home !</h1>
                             <p>Let's have a look to your Nest usage</p>
-                            <p><a class="btn btn-lg btn-info" href="#overview" role="button">Discover</a></p>
+                            <p><a class="btn btn-lg btn-warning" href="#overview" role="button">Discover</a></p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
             }
             ?>
             <div class="panel panel-default">
-                <div class="panel-heading"> <h3 class="panel-title">Climate Overview</h3></div>
+                <div class="panel-heading"> <h3 class="panel-title">Climate Overview <small>(°C)</small></h3></div>
                 <div class="panel-body">
                     <div class="row">
                         <div id="target-gauge" class="col-xs-6 col-sm-4 nest-gauges"></div>
@@ -90,9 +90,21 @@
             <div class="panel panel-default">
                 <div class="panel-heading"> <h3 class="panel-title">Temperature History</h3></div>
                 <div class="panel-body">
-                    <div class="row">       
+	                <div class="row">       
                         <div id="nest-daytemp" class="col-md-12 nest-day"></div>
                     </div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Options <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a id="TempDayAll">All</a></li>
+    						<li role="separator" class="divider"></li>
+							<li><a id="TempDayTarget">Hide Target Temperature</a></li>
+							<li><a id="TempDayInt">Hide Interior Temperature</a></li>
+							<li><a id="TempDayExt">Hide Exterior Temperature</a></li>
+  						</ul>
+					</div>
                 </div>
             </div> <!-- /.panel -->
             <div class="panel panel-default">
@@ -101,6 +113,18 @@
                     <div class="row">       
                         <div id="nest-dayhum" class="col-md-12 nest-day"></div>
                     </div>
+                    <div class="btn-group">
+						<button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Options <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a id="HumDayAll">All</a></li>
+    						<li role="separator" class="divider"></li>
+							<li><a id="HumDayTarget">Hide Target Humidity</a></li>
+							<li><a id="HumDayInt">Hide Interior Humidity</a></li>
+							<li><a id="HumDayExt">Hide Exterior Humidity</a></li>
+  						</ul>
+					</div>
                 </div>
             </div> <!-- /.panel -->
             <!-- /.Overview -->
