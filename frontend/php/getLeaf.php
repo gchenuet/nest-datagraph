@@ -11,7 +11,7 @@ $sql_array = array("cols" => array(array("label"=>"Date", "type"=>"datetime"),ar
 while($row =mysqli_fetch_assoc($result))
 {
     $phpdate = strtotime($row['date']);
-    $date_array = "Date(".date('Y', $phpdate).",".date('n', strtotime("-1 month", $phpdate)).",".date('d', $phpdate).")";
+    $date_array = "Date(".date('Y', $phpdate).",".date('n', strtotime("first day of -1 month", $phpdate)).",".date('d', $phpdate).")";
     $sql_array["rows"][] = array("c" => array(array("v" => $date_array), array("v" => $row["leaf"])));
 }
 mysqli_close($connection);
