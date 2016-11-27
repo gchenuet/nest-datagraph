@@ -114,7 +114,7 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 	```
 			
 	```
-	0   *   *   *   *   /usr/bin/python /opt/nest_datagraph/backend/poller.py
+	0   *   *   *   *   /usr/bin/python /opt/nest-datagraph/backend/poller.py
 	```
 			
 * Setup Nest DataGraph frontend
