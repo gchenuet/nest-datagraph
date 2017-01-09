@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `city_curr_temp` float unsigned DEFAULT NULL,
+  `city_curr_temp` float DEFAULT NULL,
   `city_curr_hum` int(10) unsigned DEFAULT NULL,
   `nest_curr_temp` float unsigned DEFAULT NULL,
   `nest_targ_temp` float unsigned DEFAULT NULL,
