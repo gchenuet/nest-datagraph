@@ -100,6 +100,41 @@ function tempChart() {
 		view.hideColumns([1]); 
 		chart.draw(view, options);
    	}
+function tempChart() {
+    var jsonData = $.ajax({
+        url: "php/getTemp.php?start="+start_date+"&end="+end_date+"",
+        dataType: "json",
+        async: false
+    }).responseText;
+
+    var options = {
+        title: 'Temperature History',
+        vAxis: { title: 'Temperature (Celsius)'},
+        hAxis: { title: 'Date',format: 'd MMM y'},
+        legend: { position: 'bottom' },
+        colors: ['#7b858e', '#00afd8', '#E54725', '#e0e0e0'],
+        curveType: 'none',
+        series: {
+        0: {},
+        1: {},
+        2: {},
+        3: {lineDashStyle: [4, 4], lineWidth: [1]}
+        }
+    };
+
+    var data = new google.visualization.DataTable(jsonData);
+    var chart = new google.visualization.LineChart(document.getElementById('nest-temp'));
+
+    chart.draw(data, options);
+    
+        
+    var TempFullTarget = document.getElementById("TempFullTarget");
+	TempFullTarget.onclick = function()
+	{
+    	view = new google.visualization.DataView(data);
+		view.hideColumns([1]); 
+		chart.draw(view, options);
+   	}
 
     var TempFullInt = document.getElementById("TempFullInt");
 	TempFullInt.onclick = function()
