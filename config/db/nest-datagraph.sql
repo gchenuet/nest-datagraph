@@ -27,6 +27,12 @@ CREATE TABLE `status` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `city_curr_temp` float DEFAULT NULL,
   `city_curr_hum` int(10) unsigned DEFAULT NULL,
+  `cur_windspeed` int(11) unsigned DEFAULT NULL,
+  `cur_pressure` int(11) unsigned DEFAULT NULL,
+  `cur_weather_status` text DEFAULT NULL,
+  `cur_weather_status_detail` text DEFAULT NULL,
+  `cur_weather_code` int(3) unsigned DEFAULT NULL,
+  `cur_weather_icon` varchar(3) DEFAULT NULL,
   `nest_curr_temp` float unsigned DEFAULT NULL,
   `nest_targ_temp` float unsigned DEFAULT NULL,
   `nest_curr_hum` int(10) unsigned DEFAULT NULL,
@@ -36,6 +42,7 @@ CREATE TABLE `status` (
   `leaf` tinyint(1) DEFAULT NULL,
   `auto_away` tinyint(1) DEFAULT NULL,
   `time_to_target` float unsigned DEFAULT NULL,
+  `away_temperature_low` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

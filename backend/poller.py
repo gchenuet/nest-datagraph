@@ -35,13 +35,21 @@ DB_NAME = ""
 
 def polling(n, w, d):
     nstat = n.show_status()
-    query = "INSERT INTO status(date,city_curr_temp,city_curr_hum, \
+    query = "INSERT INTO status(date, city_curr_temp, city_curr_hum, cur_weather_icon, \
+    		 cur_weather_code, cur_weather_status_detail, cur_weather_status, \
+    		 cur_pressure, cur_windspeed,	\
              nest_curr_temp,nest_targ_temp,nest_curr_hum,nest_targ_hum, \
              nest_heat_state, current_schedule_mode, leaf,auto_away, \
-             time_to_target) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    args = (datetime.datetime.now(),
+             time_to_target, away_temperature_low) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+args = (datetime.datetime.now(),
             w.get_temperature('celsius')['temp'],
             w.get_humidity(),
+            w.get_weather_icon_name(),
+            w.get_weather_code(),
+            w.get_detailed_status(),
+            w.get_status(),
+            w.get_pressure()['press'],
+            w.get_wind()['speed'],            
             nstat['current_temperature'],
             nstat['target_temperature'],
             nstat['current_humidity'],
@@ -50,7 +58,8 @@ def polling(n, w, d):
             nstat['current_schedule_mode'],
             int(nstat['leaf']),
             int(nstat['auto_away']),
-            nstat['time_to_target']);
+            nstat['time_to_target'],
+            nstat['away_temperature_low']);
     d.execute(query, args)
 
 def main():
