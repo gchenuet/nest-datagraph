@@ -1,4 +1,4 @@
-google.charts.load('current', {'packages':['corechart', 'bar']});
+google.charts.load('current', {'packages':['corechart', 'bar', 'line']});
 //Load Charts
 google.charts.setOnLoadCallback(leafChart);
 google.charts.setOnLoadCallback(heatingChart);
@@ -18,7 +18,7 @@ function leafChart() {
     var data = new google.visualization.DataTable(jsonData);
 
     var options = {
-        hAxis: {title: 'Days', format: 'MMM d, y'},
+        hAxis: {title: 'Days', format: 'd MMM y'},
         vAxis: {title: 'Leaf', minValue: 0, ticks: [{v:0, f:'Missed'}, {v:1, f:'Acquired'}]},
         colors: ['#9BC645']
     };
@@ -35,15 +35,13 @@ function heatingChart() {
         async: false
     }).responseText;
 
-
     var data = new google.visualization.DataTable(jsonData);
 
     var options = {
-        hAxis: {title: 'Days', format: 'MMM d, y'},
-        vAxis: {title: 'Hours', minValue: 0, maxValue: 24, gridlines: {count: -1}, viewWindow: {min: 1},},
+        hAxis: {title: 'Days', format: 'd MMM y'},
+        vAxis: {title: 'Hours', minValue: 0, maxValue: 24, gridlines: {count: 6}, viewWindow: {min: 1, max: 24},},
         colors: ['#E54725', '#9BC645'],
         isStacked: true,
-        bar: {groupWidth: "20"},
     };
 
     var chart = new google.visualization.SteppedAreaChart(document.getElementById('nest-heat'));
@@ -61,7 +59,7 @@ function presenceChart() {
     var data = new google.visualization.DataTable(jsonData);
 
     var options = {
-        hAxis: {title: 'Days', format: 'MMM d, y'},
+        hAxis: {title: 'Days', format: 'd MMM y'},
         vAxis: {title: 'Hours', minValue: 0, maxValue: 24},
         colors: ['#00afd8', '#7b858e'],
         isStacked: true,
@@ -72,34 +70,6 @@ function presenceChart() {
     chart.draw(data, options);
 }
 
-function tempChart() {
-    var jsonData = $.ajax({
-        url: "php/getTemp.php?start="+start_date+"&end="+end_date+"",
-        dataType: "json",
-        async: false
-    }).responseText;
-
-    var options = {
-        title: 'Temperature History',
-        vAxis: { title: 'Temperature (Celsius)'},
-        hAxis: { title: 'Date',format: 'MMM d, H:mm'},
-        legend: { position: 'bottom' },
-        colors: ['#7b858e', '#00afd8', '#E54725']
-    };
-
-    var data = new google.visualization.DataTable(jsonData);
-    var chart = new google.visualization.LineChart(document.getElementById('nest-temp'));
-
-    chart.draw(data, options);
-    
-        
-    var TempFullTarget = document.getElementById("TempFullTarget");
-	TempFullTarget.onclick = function()
-	{
-    	view = new google.visualization.DataView(data);
-		view.hideColumns([1]); 
-		chart.draw(view, options);
-   	}
 function tempChart() {
     var jsonData = $.ajax({
         url: "php/getTemp.php?start="+start_date+"&end="+end_date+"",
@@ -124,6 +94,7 @@ function tempChart() {
 
     var data = new google.visualization.DataTable(jsonData);
     var chart = new google.visualization.LineChart(document.getElementById('nest-temp'));
+//	var chart = new google.charts.Line(document.getElementById('nest-temp'));
 
     chart.draw(data, options);
     
@@ -172,13 +143,15 @@ function humChart() {
     var options = {
         title: 'Humidity History',
         vAxis: { title: 'Humidity (%)'},
-        hAxis: { title: 'Date', format: 'MMM d, H:mm'},
+        hAxis: { title: 'Date', format: 'd MMM y'},
         legend: { position: 'bottom' },
-        colors: ['#7b858e', '#00afd8', '#E54725']
+        colors: ['#7b858e', '#00afd8', '#E54725'],
+        curveType: 'none',
     };
 
     var data = new google.visualization.DataTable(jsonData);
     var chart = new google.visualization.LineChart(document.getElementById('nest-hum'));
+//	var chart = new google.charts.Line(document.getElementById('nest-hum'));
 
     chart.draw(data, options);
     
