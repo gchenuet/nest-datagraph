@@ -42,6 +42,7 @@ CREATE TABLE `status` (
   `leaf` tinyint(1) DEFAULT NULL,
   `auto_away` tinyint(1) DEFAULT NULL,
   `time_to_target` float unsigned DEFAULT NULL,
+  `away_temperature_low` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
