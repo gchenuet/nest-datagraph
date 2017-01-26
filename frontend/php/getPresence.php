@@ -12,7 +12,7 @@ while($row =mysqli_fetch_assoc($result))
 {
     $phpdate = strtotime($row['date']);
     $date_array = "Date(".date('Y', $phpdate).",".(date('n', $phpdate)-1).",".date('d', $phpdate).")";
-    $sql_array["rows"][] = array("c" => array(array("v" => $date_array), array("v" => intval($row["auto_away"])), array("v" => (24 - $row["auto_away"]))));
+    $sql_array["rows"][] = array("c" => array(array("v" => $date_array), array("v" => (24 - intval($row["auto_away"]))), array("v" => intval($row["auto_away"]))));
 }
 mysqli_close($connection);
 echo json_encode($sql_array);
