@@ -138,8 +138,8 @@
                                     <img src="images/fire-cloud.svg" class="img-responsive img-head" alt="Heating">
                                 </div>
                                 <div class="col-md-12 data-center">
-                                    <p><strong><span id="heating-value"></span></strong></p>
-                                    <p class="desc-value">Heating hours</p>
+                                    <p><strong><span id="heating-perc-value"></span>%</strong></p>
+                                    <p class="desc-value">Heating Time</p>
                                 </div>
                             </div>
                         </div>
@@ -175,11 +175,11 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="images/nest-house.svg" class="img-responsive img-head" alt="House">
+                                    <img src="images/nest-house.svg" class="img-responsive img-head" id="home-img">
                                 </div>
                                 <div class="col-md-12 data-center">
-                                    <p><strong><span id="home-value"></span></strong></p>
-                                    <p class="desc-value">Presence hours</p>
+                                    <p><strong><span id="home-perc-value"></span>%</strong></p>
+                                    <p class="desc-value">At Home</p>
                                 </div>
                             </div>
                         </div>
@@ -190,11 +190,11 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="images/auto-away.svg" class="img-responsive img-head" alt="Auto-Away">
+                                    <img src="images/auto-away.svg" class="img-responsive img-head" id="away-img">
                                 </div>
                                 <div class="col-md-12 data-center">
-                                    <p><strong><span id="away-value"></span></strong></p>
-                                    <p class="desc-value">Absence hours / Off</p>
+                                    <p><strong><span id="away-perc-value"></span>%</strong></p>
+                                    <p class="desc-value">Away</p>
                                 </div>
                             </div>
                         </div>
