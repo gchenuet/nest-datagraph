@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <style>
+      .overlay {
+           width: 920px;
+           height: 100px;
+           position: absolute;
+           top: 1080px;   /* chartArea top  */
+           left: 20%; /* chartArea left */
+    }
+    </style>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +28,7 @@
     <body>
 	    <?php
         include('php/nestFunctions.php');
+
         $ini = parse_ini_file("php/params.ini", true);
         $lastRecord = json_decode(getLastRecord());
         ?>
@@ -53,7 +63,7 @@
         </div>
         <!-- /.Navbar -->
         <!-- Carousel -->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    	 <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="item active" id="carousel-index">
                     <div class="container">
@@ -71,7 +81,7 @@
         <div class="container overview" id="overview">
             <?php
             if ($lastRecord[0]->nest_heat_state == 0) {
-                echo "<div class='alert alert-success' role='alert'>Thermostat is currently <strong>IDLE</strong></div>";
+                echo "<div class='alert alert-info' role='alert'>Thermostat is currently <strong>IDLE</strong></div>";
             } else {
 
                 echo "<div class='alert alert-danger' role='alert'>Thermostat is currently <strong>HEATING</strong>, ready in ".$lastRecord[0]->time_to_target." minutes</div>";
@@ -88,10 +98,12 @@
                 </div>
             </div> <!-- /.panel -->
             <div class="panel panel-default">
+        
                 <div class="panel-heading"> <h3 class="panel-title">Temperature History</h3></div>
+
                 <div class="panel-body">
 	                <div class="row">       
-                        <div id="nest-daytemp" class="col-md-12 nest-day"></div>
+                       	<div id="nest-daytemp" class="col-md-12 nest-day"></div>
                     </div>
 					<div class="btn-group">
 						<button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -105,6 +117,7 @@
 							<li><a id="TempDayExt">Hide Exterior Temperature</a></li>
   						</ul>
 					</div>
+					                     <div class="overlay"><div><?php include('php/getDayTemp_Icon.php'); ?></div></div>
                 </div>
             </div> <!-- /.panel -->
             <div class="panel panel-default">
