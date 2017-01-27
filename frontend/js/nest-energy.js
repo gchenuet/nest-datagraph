@@ -129,8 +129,6 @@ function tempChart() {
 		view = new google.visualization.DataView(data);
 		chart.draw(view, options);
    }
-
-
 }
 
 function humChart() {
@@ -185,14 +183,16 @@ function humChart() {
 		view = new google.visualization.DataView(data);
 		chart.draw(view, options);
    }
-
 }
 
 function updateData() {
     $.getJSON( "php/getEnergyStats.php?start="+start_date+"&end="+end_date+"", function( json ) {
-        document.getElementById("heating-value").textContent=json[0].IS_HEATING;
+       	document.getElementById("heating-perc-value").title=json[0].IS_HEATING+"h";
+        document.getElementById("heating-perc-value").textContent=json[0].HEATING_PERC;
         document.getElementById("leaf-value").textContent=json[0].LEAF;
-        document.getElementById("home-value").textContent=json[0].AT_HOME;
-        document.getElementById("away-value").textContent=json[0].AUTO_AWAY;
+        document.getElementById("home-perc-value").textContent=json[0].AT_HOME_PERC;
+        document.getElementById("away-perc-value").textContent=json[0].AUTO_AWAY_PERC;
+        document.getElementById("home-perc-value").title=json[0].AT_HOME_HOURS+"h";
+        document.getElementById("away-perc-value").title=json[0].AUTO_AWAY_HOURS+"h";
     });
 }

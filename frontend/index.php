@@ -71,7 +71,7 @@
         <div class="container overview" id="overview">
             <?php
             if ($lastRecord[0]->nest_heat_state == 0) {
-                echo "<div class='alert alert-info' role='alert'>Thermostat is currently <strong>IDLE</strong></div>";
+                echo "<div class='alert alert-success' role='alert'>Thermostat is currently <strong>IDLE</strong></div>";
             } else {
 
                 echo "<div class='alert alert-danger' role='alert'>Thermostat is currently <strong>HEATING</strong>, ready in ".$lastRecord[0]->time_to_target." minutes</div>";
