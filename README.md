@@ -95,7 +95,7 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 * Setup Nest DataGraph backend
 	```
 	cp /opt/nest-datagraph/backend/settings.py.example /opt/nest-datagraph/backend/settings.py
-  vi /opt/nest-datagraph/backend/settings.py
+	vi /opt/nest-datagraph/backend/settings.py
 	```
 			
 * Fill in variables with your parameters:         
@@ -120,7 +120,7 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 			
 * Setup Nest DataGraph frontend
 	```
-  cp /opt/nest-datagraph/frontend/php/params.ini.example /opt/nest-datagraph/frontend/php/params.ini
+	cp /opt/nest-datagraph/frontend/php/params.ini.example /opt/nest-datagraph/frontend/php/params.ini
 	vi /opt/nest-datagraph/frontend/php/params.ini
 	```
 			
