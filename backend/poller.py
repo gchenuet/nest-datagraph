@@ -18,20 +18,7 @@ import pyowm
 import datetime
 from nest import Nest
 import mysql.connector
-
-# Override variables with your informations
-OWM = ""
-OWM_CITY = ""
-
-NEST_ID = ""
-NEST_PWD = ""
-NEST_SN = ""
-
-DB_USER = ""
-DB_PWD = ""
-DB_HOST = ""
-DB_NAME = ""
-
+from settings import *
 
 def polling(n, w, d):
     nstat = n.show_status()
