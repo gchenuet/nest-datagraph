@@ -5,7 +5,7 @@ $date = date('Y-m-d H:i:s', time());
 $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysql_username'],$ini['mysql']['mysql_password'],$ini['mysql']['mysql_database'])
     or die("Connection Error " . mysqli_error($connection));
 
-$sql = "SELECT SUM(nest_heat_state) AS IS_HEATING, SUM(if(auto_away = '1', 1, 0)) AS AT_HOME_HOURS, SUM(if(auto_away = '1', 0, 1)) AS AUTO_AWAY_HOURS, 
+$sql = "SELECT SUM(nest_heat_state) AS IS_HEATING, SUM(if(auto_away = '1', 0, 1)) AS AT_HOME_HOURS, SUM(if(auto_away = '1', 1, 0)) AS AUTO_AWAY_HOURS, 
         (SELECT COUNT(*) AS leaf FROM (SELECT leaf FROM status WHERE leaf = 1 AND (DATE(date) BETWEEN (date('".$_GET['start']."')) AND (date('".$_GET['end']."'))) 
         GROUP BY date(date) ORDER BY date ASC) status) AS LEAF FROM status WHERE (DATE(date) BETWEEN (date('".$_GET['start']."')) AND (date('".$_GET['end']."')));";
 
