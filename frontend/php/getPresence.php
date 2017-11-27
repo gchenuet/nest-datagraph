@@ -1,5 +1,5 @@
 <?php
-$ini = parse_ini_file("params.ini", true);
+$ini = parse_ini_file(realpath("../../config/settings.ini"), true);
 date_default_timezone_set($ini['common']['timezone']);
 $date = date('Y-m-d H:i:s', time());
 $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysql_username'],$ini['mysql']['mysql_password'],$ini['mysql']['mysql_database'])
@@ -7,7 +7,7 @@ $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysq
 $sql = "SELECT date, ROUND(SUM(auto_away)) AS auto_away FROM status WHERE (DATE(date) BETWEEN (date('".$_GET['start']."')) AND (date('".$_GET['end']."'))) 
 		GROUP BY DAY(date) ORDER BY date ASC;";
 $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
-$sql_array = array("cols" => array(array("label"=>"Date", "type"=>"datetime"),array("label"=>"At Home","type"=>"number"), array("label"=>"Auto-Away","type"=>"number")));
+$sql_array = array("cols" => array(array("label"=>"Date", "type"=>"datetime"),array("label"=>"Auto-Away","type"=>"number"), array("label"=>"At Home","type"=>"number")));
 while($row =mysqli_fetch_assoc($result))
 {
     $phpdate = strtotime($row['date']);

@@ -19,7 +19,7 @@
     <body>
 	    <?php
         include('php/nestFunctions.php');
-        $ini = parse_ini_file("php/params.ini", true);
+        $ini = parse_ini_file(realpath("../config/settings.ini"), true);
         $lastRecord = json_decode(getLastRecord());
         ?>
         <!-- NAVBAR -->

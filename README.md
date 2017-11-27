@@ -92,22 +92,22 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 	sudo mysql -h <HOST> -u <USER> -p<PASSWORD> nest_datagraph < /opt/nest-datagraph/config/db/nest-datagraph.sql
 	```
 			
-* Setup Nest DataGraph backend
+* Setup Nest DataGraph runtime config
 	```
-	cp /opt/nest-datagraph/backend/settings.py.example /opt/nest-datagraph/backend/settings.py
-	vi /opt/nest-datagraph/backend/settings.py
+	cp /opt/nest-datagraph/conf/settings.ini.example /opt/nest-datagraph/conf/settings.ini
+	vi /opt/nest-datagraph/conf/settings.ini
 	```
 			
-* Fill in variables with your parameters:         
-    * `OWM` - OpenWeatherMap API Key
-    * `OWM_CITY` - Your city (Ex: 'Paris,fr')
-    * `NEST_ID` - Nest login
-    * `NEST_PWD` - Nest password
-    * `NEST_SN` - Nest Thermostat serial number
-    * `DB_USER` - MySQL user
-    * `DB_PWD` - MySQL password
-    * `DB_HOST` = IP or FQDN of your MySQL server
-    * `DB_NAME` = Database name
+* Fill in variables with your parameters, for example:         
+    * `owm_key` - OpenWeatherMap API Key
+    * `owm_city` - Your city (Ex: 'Paris,fr')
+    * `nest_username` - Nest login
+    * `nest_password` - Nest password
+    * `nest_sn` - Nest Thermostat serial number
+    * `mysql_username` - MySQL user
+    * `mysql_password` - MySQL password
+    * `mysql_hostname` = IP or FQDN of your MySQL server
+    * `mysql_database` = Database name
 			
 * Open the crontab and add the line at the end of the file:
 	```
@@ -117,22 +117,6 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
 	```
 	0   *   *   *   *   /usr/bin/python /opt/nest-datagraph/backend/poller.py
 	```
-			
-* Setup Nest DataGraph frontend
-	```
-	cp /opt/nest-datagraph/frontend/php/params.ini.example /opt/nest-datagraph/frontend/php/params.ini
-	vi /opt/nest-datagraph/frontend/php/params.ini
-	```
-			
-* Fill in variables with your parameters:
-    * `timezone` - Your timezone (Ex: 'Europe/Paris')
-    * `protect` - Set to 'true' if you have one or more Nest Protect device
-    * `nest_username` - Nest login
-    * `nest_password` - Nest password
-    * `mysql_hostname` = IP or FQDN of your MySQL server
-    * `mysql_database` = Database name
-    * `mysql_username` = MySQL user
-    * `mysql_password` = MySQL password
 			
 * Enjoy (and wait a hour) !
 			

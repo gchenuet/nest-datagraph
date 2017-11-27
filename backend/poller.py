@@ -18,7 +18,19 @@ import pyowm
 import datetime
 from nest import Nest
 import mysql.connector
-from settings import *
+import ConfigParser
+
+configParser = ConfigParser.RawConfigParser()
+configParser.readfp(open('../config/settings.ini')) 
+OWM = configParser.get('owm', 'owm_key').strip('\"\'')
+OWM_CITY = configParser.get('owm', 'owm_city').strip('\"\'')
+NEST_ID = configParser.get('nest', 'nest_username').strip('\"\'')
+NEST_PWD = configParser.get('nest', 'nest_password').strip('\"\'')
+NEST_SN = configParser.get('nest', 'nest_sn').strip('\"\'')
+DB_USER = configParser.get('mysql', 'mysql_username').strip('\"\'')
+DB_PWD = configParser.get('mysql', 'mysql_password').strip('\"\'')
+DB_HOST = configParser.get('mysql', 'mysql_hostname').strip('\"\'')
+DB_NAME = configParser.get('mysql', 'mysql_database').strip('\"\'')
 
 def polling(n, w, d):
     nstat = n.show_status()
