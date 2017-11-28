@@ -19,18 +19,19 @@ import datetime
 from nest import Nest
 import mysql.connector
 import ConfigParser
+import os
 
-configParser = ConfigParser.RawConfigParser()
-configParser.readfp(open('../config/settings.ini')) 
-OWM = configParser.get('owm', 'owm_key').strip('\"\'')
-OWM_CITY = configParser.get('owm', 'owm_city').strip('\"\'')
-NEST_ID = configParser.get('nest', 'nest_username').strip('\"\'')
-NEST_PWD = configParser.get('nest', 'nest_password').strip('\"\'')
-NEST_SN = configParser.get('nest', 'nest_sn').strip('\"\'')
-DB_USER = configParser.get('mysql', 'mysql_username').strip('\"\'')
-DB_PWD = configParser.get('mysql', 'mysql_password').strip('\"\'')
-DB_HOST = configParser.get('mysql', 'mysql_hostname').strip('\"\'')
-DB_NAME = configParser.get('mysql', 'mysql_database').strip('\"\'')
+config = ConfigParser.ConfigParser()
+config.read(os.path.join(os.path.dirname(__file__), "../config/settings.ini"))
+OWM = config.get('owm', 'owm_key').strip('\"\'')
+OWM_CITY = config.get('owm', 'owm_city').strip('\"\'')
+NEST_ID = config.get('nest', 'nest_username').strip('\"\'')
+NEST_PWD = config.get('nest', 'nest_password').strip('\"\'')
+NEST_SN = config.get('nest', 'nest_sn').strip('\"\'')
+DB_USER = config.get('mysql', 'mysql_username').strip('\"\'')
+DB_PWD = config.get('mysql', 'mysql_password').strip('\"\'')
+DB_HOST = config.get('mysql', 'mysql_hostname').strip('\"\'')
+DB_NAME = config.get('mysql', 'mysql_database').strip('\"\'')
 
 def polling(n, w, d):
     nstat = n.show_status()
