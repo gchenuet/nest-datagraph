@@ -18,20 +18,20 @@ import pyowm
 import datetime
 from nest import Nest
 import mysql.connector
+import ConfigParser
+import os
 
-# Override variables with your informations
-OWM = ""
-OWM_CITY = ""
-
-NEST_ID = ""
-NEST_PWD = ""
-NEST_SN = ""
-
-DB_USER = ""
-DB_PWD = ""
-DB_HOST = ""
-DB_NAME = ""
-
+config = ConfigParser.ConfigParser()
+config.read(os.path.join(os.path.dirname(__file__), "../config/settings.ini"))
+OWM = config.get('owm', 'owm_key').strip('\"\'')
+OWM_CITY = config.get('owm', 'owm_city').strip('\"\'')
+NEST_ID = config.get('nest', 'nest_username').strip('\"\'')
+NEST_PWD = config.get('nest', 'nest_password').strip('\"\'')
+NEST_SN = config.get('nest', 'nest_sn').strip('\"\'')
+DB_USER = config.get('mysql', 'mysql_username').strip('\"\'')
+DB_PWD = config.get('mysql', 'mysql_password').strip('\"\'')
+DB_HOST = config.get('mysql', 'mysql_hostname').strip('\"\'')
+DB_NAME = config.get('mysql', 'mysql_database').strip('\"\'')
 
 def polling(n, w, d):
     nstat = n.show_status()

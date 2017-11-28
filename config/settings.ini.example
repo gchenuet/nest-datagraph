@@ -1,12 +1,19 @@
+; Override variables with your informations
+
 [common]
 timezone = "Europe/Paris"
 
-# Set "true"  if you have one or more Nest Protect smoke detector
+; Set "true"  if you have one or more Nest Protect smoke detector
 protect = "false"
+
+[owm]
+owm_key = ""
+owm_city = ""
 
 [nest]
 nest_username = ""
 nest_password = ""
+nest_sn = ""
 
 [mysql]
 mysql_hostname = ""
