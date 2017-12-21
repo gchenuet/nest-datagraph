@@ -81,7 +81,7 @@ function tempChart() {
 
     var options = {
         title: 'Temperature History',
-        vAxis: { title: 'Temperature (Celsius)'},
+        vAxis: { title: 'Temperature'},
         hAxis: { title: 'Date',format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },
         colors: ['#7b858e', '#00afd8', '#E54725']

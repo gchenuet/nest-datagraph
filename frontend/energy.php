@@ -45,7 +45,7 @@
                                 <li><a href="index.php">Overview</a></li>
                                 <li class="active"><a href="energy.php">Energy</a></li>
                                 <?php
-	                                if ($ini['nest']['nest_protect'] == "true") {
+	                                if ($ini['nest']['nest_protect'] == true) {
 		                                echo "<li><a href='protect.php'>Protect</a></li>";
 	                                }
 	                            ?>

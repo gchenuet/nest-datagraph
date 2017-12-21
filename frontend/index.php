@@ -41,7 +41,7 @@
                                 <li class="active"><a href="index.php">Overview</a></li>
                                 <li><a href="energy.php">Energy</a></li>
                                 <?php
-	                            if ($ini['nest']['nest_protect'] == "true") {
+	                            if ($ini['nest']['nest_protect'] == true) {
 		                            echo "<li><a href='protect.php'>Protect</a></li>";
 	                            }
 	                            ?>
@@ -78,7 +78,7 @@
             }
             ?>
             <div class="panel panel-default">
-                <div class="panel-heading"> <h3 class="panel-title">Climate Overview <small>(°C)</small></h3></div>
+                <div class="panel-heading"> <h3 class="panel-title">Climate Overview</h3></div>
                 <div class="panel-body">
                     <div class="row">
                         <div id="target-gauge" class="col-xs-6 col-sm-4 nest-gauges"></div>

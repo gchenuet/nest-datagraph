@@ -8,18 +8,28 @@ google.charts.setOnLoadCallback(dayHumChart);
 
 function targetGauge() {
 
-    var options = {
-        redFrom: 50, redTo: 60,
-        yellowFrom:40, yellowTo: 50,
-        minorTicks: 1, max: 60,
-    };
-
-
     var jsonData = $.ajax({
         url: "php/getTargetTemp.php",
         dataType: "json",
         async: false
     }).responseText;
+
+    var obj = JSON.parse(jsonData);
+
+    if (obj.rows[0].c[0].v < 50) {
+    	var options = {
+    	    redFrom: 50, redTo: 60,
+    	    yellowFrom:40, yellowTo: 50,
+    	    minorTicks: 1, max: 60
+    	};
+    }
+    else {
+       var options = {
+           redFrom: 122, redTo: 140,
+           yellowFrom:104, yellowTo: 122,
+           minorTicks: 1, max: 140,
+       };
+    }
 
     var data = new google.visualization.DataTable(jsonData);
 
@@ -36,11 +46,22 @@ function intGauge() {
         async: false
     }).responseText;
 
-    var options = {
-        redFrom: 50, redTo: 60,
-        yellowFrom:40, yellowTo: 50,
-        minorTicks: 1, max: 60
-    };
+    var obj = JSON.parse(jsonData);
+
+    if (obj.rows[0].c[0].v < 50) {
+    	var options = {
+    	    redFrom: 50, redTo: 60,
+    	    yellowFrom:40, yellowTo: 50,
+    	    minorTicks: 1, max: 60
+    	};
+    }
+    else {
+       var options = {
+           redFrom: 122, redTo: 140,
+           yellowFrom:104, yellowTo: 122,
+           minorTicks: 1, max: 140,
+       };
+    }
 
     var data = new google.visualization.DataTable(jsonData);
 
@@ -57,11 +78,22 @@ function extGauge() {
         async: false
     }).responseText;
 
-    var options = {
-        redFrom: 50, redTo: 60,
-        yellowFrom:40, yellowTo: 50,
-        minorTicks: 1, max: 60
-    };
+    var obj = JSON.parse(jsonData);
+
+    if (obj.rows[0].c[0].v < 50) {
+    	var options = {
+    	    redFrom: 50, redTo: 60,
+    	    yellowFrom:40, yellowTo: 50,
+    	    minorTicks: 1, max: 60
+    	};
+    }
+    else {
+       var options = {
+           redFrom: 122, redTo: 140,
+           yellowFrom:104, yellowTo: 122,
+           minorTicks: 1, max: 140,
+       };
+    }
 
     var data = new google.visualization.DataTable(jsonData);
 
@@ -79,7 +111,7 @@ function dayTempChart() {
 
     var options = {
         title: 'Temperature History',
-        vAxis: { title: 'Temperature (Celsius)'},
+        vAxis: { title: 'Temperature'},
         hAxis: { title: 'Date',format: 'MMM d, H:mm'},
         legend: { position: 'bottom' },
         colors: ['#7b858e', '#00afd8', '#E54725']
