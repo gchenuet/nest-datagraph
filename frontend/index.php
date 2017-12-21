@@ -19,7 +19,7 @@
     <body>
 	    <?php
         include('php/nestFunctions.php');
-        $ini = parse_ini_file("php/params.ini", true);
+        $ini = parse_ini_file("conf/settings.ini", true);
         $lastRecord = json_decode(getLastRecord());
         ?>
         <!-- NAVBAR -->
@@ -41,7 +41,7 @@
                                 <li class="active"><a href="index.php">Overview</a></li>
                                 <li><a href="energy.php">Energy</a></li>
                                 <?php
-	                            if ($ini['common']['protect'] == "true") {
+	                            if ($ini['nest']['nest_protect'] == "true") {
 		                            echo "<li><a href='protect.php'>Protect</a></li>";
 	                            }
 	                            ?>

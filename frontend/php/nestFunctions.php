@@ -1,7 +1,7 @@
 <?php
 
 function getLastRecord() {
-    $ini = parse_ini_file("params.ini", true);
+    $ini = parse_ini_file("conf/settings.ini", true);
     $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysql_username'],$ini['mysql']['mysql_password'],$ini['mysql']['mysql_database'])
         or die("Connection Error " . mysqli_error($connection));
     $sql = "SELECT * FROM status ORDER BY id DESC LIMIT 1;";
@@ -17,7 +17,7 @@ function getLastRecord() {
 
 
 function getDayRecord() {
-    $ini = parse_ini_file("params.ini", true);
+    $ini = parse_ini_file("conf/settings.ini", true);
     date_default_timezone_set($ini['common']['timezone']);
     $date = date('Y-m-d H:i:s', time());
     $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysql_username'],$ini['mysql']['mysql_password'],$ini['mysql']['mysql_database'])

@@ -1,5 +1,5 @@
 <?php
-$ini = parse_ini_file("params.ini", true);
+$ini = parse_ini_file("../conf/settings.ini", true);
 date_default_timezone_set($ini['common']['timezone']);
 $date = date('Y-m-d H:i:s', time());
 $connection = mysqli_connect($ini['mysql']['mysql_hostname'],$ini['mysql']['mysql_username'],$ini['mysql']['mysql_password'],$ini['mysql']['mysql_database'])

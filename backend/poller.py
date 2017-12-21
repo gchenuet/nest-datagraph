@@ -14,23 +14,13 @@
 #    attribution to me (i.e. Include my name and thank me for the hours I spent
 #    on this)
 
-import pyowm
+import configparser
 import datetime
-from nest import Nest
 import mysql.connector
-
-# Override variables with your informations
-OWM = ""
-OWM_CITY = ""
-
-NEST_ID = ""
-NEST_PWD = ""
-NEST_SN = ""
-
-DB_USER = ""
-DB_PWD = ""
-DB_HOST = ""
-DB_NAME = ""
+from nest import Nest
+import os
+import pyowm
+import sys
 
 
 def polling(n, w, d):
@@ -50,25 +40,40 @@ def polling(n, w, d):
             nstat['current_schedule_mode'],
             int(nstat['leaf']),
             int(nstat['auto_away']),
-            nstat['time_to_target']);
+            nstat['time_to_target'])
     d.execute(query, args)
 
+
 def main():
-    #Setup Nest account
-    n = Nest(NEST_ID, NEST_PWD, NEST_SN, 0, "C")
-    n.login()
-    n.get_status()
-    # Setup OpenWeatherMap account
-    owm = pyowm.OWM(OWM)
-    observation = owm.weather_at_place(OWM_CITY)
-    w = observation.get_weather()
-    # Connect to DB
-    cnx = mysql.connector.connect(user=DB_USER, password=DB_PWD,
-                                  host=DB_HOST, database=DB_NAME)
-    d = cnx.cursor()
-    polling(n, w, d)
-    cnx.commit()
-    d.close()
+    try:
+        c = configparser.ConfigParser()
+        c.read(os.path.join(os.path.abspath(os.path.dirname(__file__)),
+                            '../frontend/conf',
+                            'settings.ini'))
+
+        # Setup Nest account
+        n = Nest(c['nest']['nest_username'],
+                 c['nest']['nest_password'],
+                 c['nest']['nest_sn'],
+                 c['nest']['nest_index'],
+                 units=c['common']['units'])
+        n.login()
+        n.get_status()
+        # Setup OpenWeatherMap account
+        owm = pyowm.OWM(c['owm']['owm_id'])
+        observation = owm.weather_at_place(c['owm']['owm_city'])
+        w = observation.get_weather()
+        # Connect to DB
+        cnx = mysql.connector.connect(user=c['mysql']['mysql_username'],
+                                      password=c['mysql']['mysql_password'],
+                                      host=c['mysql']['mysql_hostname'],
+                                      database=c['mysql']['mysql_database'])
+        d = cnx.cursor()
+        polling(n, w, d)
+        cnx.commit()
+        d.close()
+    except Exception:
+        print(sys.exc_info()[1])
 
 if __name__ == "__main__":
     main()

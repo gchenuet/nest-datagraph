@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb
+    volumes:
+      - /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: nest_datagraph
+      MYSQL_PASSWORD: n3st_d4t4gr4ph
+      MYSQL_DATABASE: nest_datagraph
+    restart: always
+  nestdatagraph:
+    build:
+      context: .
+    ports:
+      - 80:8000
+    links:
+      - mariadb:mariadb
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=nest_datagraph
+      - DB_USERNAME=nest_datagraph
+      - DB_PASSWORD=n3st_d4t4gr4ph
+      - DEBUG=false
+    depends_on:
+      - mariadb
+    restart: on-failure

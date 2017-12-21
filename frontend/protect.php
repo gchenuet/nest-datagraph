@@ -18,12 +18,12 @@
         <?php
         include('php/nestFunctions.php');
         require_once('php/nest.class.php');
-        $ini = parse_ini_file("php/params.ini", true);
+        $ini = parse_ini_file("conf/settings.ini", true);
         define('USERNAME', $ini['nest']['nest_username']);
-		define('PASSWORD', $ini['nest']['nest_password']);
+	define('PASSWORD', $ini['nest']['nest_password']);
         $lastRecord = json_decode(getLastRecord());
-		$nest = new Nest();
-		$protects = json_decode($nest->getProtectDevices(), true);
+	$nest = new Nest();
+	$protects = json_decode($nest->getProtectDevices(), true);
         ?>
         <div class="navbar-wrapper">
             <div class="container">
@@ -43,7 +43,7 @@
                                 <li><a href="index.php">Overview</a></li>
                                 <li><a href="energy.php">Energy</a></li>
                                 <?php
-	                                if ($ini['common']['protect'] == "true") {
+	                                if ($ini['nest']['nest_protect'] == "true") {
 		                                echo "<li class='active'><a href='protect.php'>Protect</a></li>";
 	                                }
 	                            ?>

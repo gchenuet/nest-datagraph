@@ -1,1 +1,2 @@
-/frontend/php/params.ini
+frontend/conf/settings.ini
+*.pyc
