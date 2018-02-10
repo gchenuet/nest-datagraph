@@ -1,3 +1,4 @@
 datetime
 mysql-connector-python
 pyowm
+configparser
