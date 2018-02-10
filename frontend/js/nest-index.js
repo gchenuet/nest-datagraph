@@ -82,16 +82,16 @@ function extGauge() {
 
     if (obj.rows[0].c[0].v < 50) {
     	var options = {
-    	    redFrom: 50, redTo: 60,
-    	    yellowFrom:40, yellowTo: 50,
-    	    minorTicks: 1, max: 60
+    	    redFrom: 45, redTo: 50,
+    	    yellowFrom:40, yellowTo: 45,
+    	    minorTicks: 1, min: -30, max: 50
     	};
     }
     else {
        var options = {
-           redFrom: 122, redTo: 140,
-           yellowFrom:104, yellowTo: 122,
-           minorTicks: 1, max: 140,
+           redFrom: 113, redTo: 122,
+           yellowFrom:104, yellowTo: 113,
+           minorTicks: 1, min: -22, max: 122
        };
     }
 
