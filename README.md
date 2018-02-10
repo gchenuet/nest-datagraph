@@ -37,7 +37,7 @@ If you want to use Nest Datagraph with Docker, please follow these steps:
     * `timezone` - Your timezone (Ex: 'Europe/Paris')
     * `units` - Choose your temperature units (C or F)
     * `owm_id` - OpenWeatherMap API Key
-    * `owm_city` - Your city (Ex: 'Paris,fr')
+    * `owm_city_id` - Your city ID (Ex: '2988507')
     * `nest_username` - Nest login
     * `nest_password` - Nest password
     * `nest_sn` - Nest Thermostat serial number
@@ -148,7 +148,7 @@ _This example is based on Debian Jessie with NGinx/PHP-FPM web server and MariaD
   * `timezone` - Your timezone (Ex: 'Europe/Paris')
   * `units` - Choose your temperature units (C or F)
   * `owm_id` - OpenWeatherMap API Key
-  * `owm_city` - Your city (Ex: 'Paris,fr')
+  * `owm_city_id` - Your city ID (Ex: '2988507')
   * `nest_username` - Nest login
   * `nest_password` - Nest password
   * `nest_sn` - Nest Thermostat serial number

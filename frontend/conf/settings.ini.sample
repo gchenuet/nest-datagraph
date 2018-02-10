@@ -6,7 +6,7 @@ units = C
 # OpenWeatherMap
 [owm]
 owm_id = <YOUR OWM KEY>
-owm_city = <YOUR CITY>
+owm_city_id = <YOUR CITY ID>
 
 # Nest
 [nest]
