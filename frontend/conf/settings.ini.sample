@@ -24,3 +24,11 @@ mysql_password = <MYSQL PASSWORD>
 mysql_hostname = <MYSQL IP>
 mysql_database = <MYSQL DATABASE>
 
+
+# If using docker-compose
+# [mysql]
+# mysql_username = nest_datagraph
+# mysql_password = n3st_d4t4gr4ph
+# mysql_hostname = mariadb
+# mysql_database = nest_datagraph
+
