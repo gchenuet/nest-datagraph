@@ -74,7 +74,7 @@ def main():
         n.get_status()
         # Setup OpenWeatherMap account
         owm = pyowm.OWM(c['owm']['owm_id'])
-        observation = owm.weather_at_id(c['owm']['owm_city_id'])
+        observation = owm.weather_at_id(int(c['owm']['owm_city_id']))
         w = observation.get_weather()
         # Connect to DB
         cnx = mysql.connector.connect(user=c['mysql']['mysql_username'],
