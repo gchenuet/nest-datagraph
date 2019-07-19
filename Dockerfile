@@ -43,6 +43,10 @@ RUN rm -f /etc/nginx/sites-available/default
 ADD setup/nginx/nest-datagraph.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
+# Timezone
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Copy project
 RUN mkdir /opt/nest-datagraph
 ADD . /opt/nest-datagraph/
