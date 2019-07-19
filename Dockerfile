@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     python-dev \
     python-pip \
     crudini \
+    cron \
     git
 
 # Tweak nginx config
@@ -51,7 +52,8 @@ ADD setup/requirements.txt setup/requirements.txt
 RUN pip install -r setup/requirements.txt
 
 # Create crontab
-ADD setup/docker/crontab /etc/cron.hourly/nest-datagraph
+ADD setup/docker/crontab /etc/cron.d/nest-datagraph
+RUN chmod 0644 /etc/cron.d/nest-datagraph
 
 # Supervisor Config
 ADD setup/docker/supervisord.conf /etc/supervisor/supervisord.conf
