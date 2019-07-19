@@ -1,5 +1,5 @@
 FROM debian:jessie-slim
-MAINTAINER Guillaume Chenuet <guillaume@chenuet.fr>
+LABEL MAINTAINER Guillaume Chenuet <guillaume@chenuet.fr>
 
 # Update base image & install packages
 RUN apt-get update && apt-get install -y \
@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     python-dev \
     python-pip \
-    crudini
+    crudini \
+    git
 
 # Tweak nginx config
 RUN sed -i -e"s/worker_processes  1/worker_processes 5/" /etc/nginx/nginx.conf && \

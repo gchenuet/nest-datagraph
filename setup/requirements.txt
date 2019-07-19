@@ -1,4 +1,4 @@
 datetime
 mysql-connector-python
-pyowm
+git+https://github.com/csparpa/pyowm.git@v2.9-LTS
 configparser
