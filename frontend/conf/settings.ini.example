@@ -1,0 +1,27 @@
+# Common
+[common]
+timezone = America/Los_Angeles
+units = F
+
+# Darksky - Get Lat and Long here: https://www.latlong.net/convert-address-to-lat-long.html
+[darksky]
+api_key = <DARKSKY API KEY>
+lat = <LATITUDE>
+long = <LONGITUDE>
+
+# Nest
+[nest]
+nest_username = <MAIL ADDRESS>
+nest_password = <PASSWORD>
+nest_sn = <NEST SERIAL NUMBER>
+nest_index = 0
+# Set to true if you have Nest Protect product
+nest_protect = false
+
+# Database
+[mysql]
+mysql_username = nest_datagraph
+mysql_password = n3st_d4t4gr4ph
+mysql_hostname = mariadb
+mysql_database = nest_datagraph
+
