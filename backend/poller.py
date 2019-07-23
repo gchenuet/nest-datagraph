@@ -78,17 +78,7 @@ def main():
         observation = ds['currently']
 
         w = observation
-
-        # # Setup OpenWeatherMap account
-        # owm = pyowm.OWM(c['owm']['owm_id'])
         
-        # # Setup lat/long coords
-        # owm_lat = c.getfloat('owm', 'owm_lat')
-        # owm_long = c.getfloat('owm', 'owm_long')
-
-        # observation = owm.weather_at_coords(owm_lat,owm_long)
-
-        # w = observation.get_weather()
         # Connect to DB
         cnx = mysql.connector.connect(user=c['mysql']['mysql_username'],
                                       password=c['mysql']['mysql_password'],
