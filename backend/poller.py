@@ -19,31 +19,30 @@ import datetime
 import mysql.connector
 from nest import Nest
 import os
-import pyowm
 import sys
+from darksky import forecast
 
-def to_f(temp):
-    return temp*1.8 + 32.0
-
+def to_c(temp):
+    return (temp - 32.0) / 1.8
 
 def polling(c, n, w, d):
-    nstat = n.show_status()
-    if c['common']['units'] == "F":
-        owmTemp = to_f(w.get_temperature('celsius')['temp'])
-        nestCurrent = to_f(nstat['current_temperature'])
-        nestTarget = to_f(nstat['target_temperature'])
+    if c['common']['units'] == "C":
+        darkTemp = to_c(w['temperature'])
+        nestCurrent = n.show_curtemp()
+        nestTarget = n.show_target_temp()
     else:
-        owmTemp = w.get_temperature('celsius')['temp']
-        nestCurrent = nstat['current_temperature']
-        nestTarget = nstat['target_temperature']
+        darkTemp = w['temperature']
+        nestCurrent = n.show_curtemp()
+        nestTarget = n.show_target_temp()
 
+    nstat = n.show_status()
     query = "INSERT INTO status(date,city_curr_temp,city_curr_hum, \
              nest_curr_temp,nest_targ_temp,nest_curr_hum,nest_targ_hum, \
              nest_heat_state, current_schedule_mode, leaf,auto_away, \
              time_to_target) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     args = (datetime.datetime.now(),
-            owmTemp,
-            w.get_humidity(),
+            darkTemp,
+            w['humidity'],
             nestCurrent,
             nestTarget,
             nstat['current_humidity'],
@@ -71,16 +70,25 @@ def main():
                  units=c['common']['units'])
         n.login()
         n.get_status()
-        # Setup OpenWeatherMap account
-        owm = pyowm.OWM(c['owm']['owm_id'])
+
+        ds = forecast(c['darksky']['api_key'],
+                c.getfloat('darksky', 'lat'),
+                c.getfloat('darksky', 'long'))
         
-        # Setup lat/long coords
-        owm_lat = c.getfloat('owm', 'owm_lat')
-        owm_long = c.getfloat('owm', 'owm_long')
+        observation = ds['currently']
 
-        observation = owm.weather_at_coords(owm_lat,owm_long)
+        w = observation
 
-        w = observation.get_weather()
+        # # Setup OpenWeatherMap account
+        # owm = pyowm.OWM(c['owm']['owm_id'])
+        
+        # # Setup lat/long coords
+        # owm_lat = c.getfloat('owm', 'owm_lat')
+        # owm_long = c.getfloat('owm', 'owm_long')
+
+        # observation = owm.weather_at_coords(owm_lat,owm_long)
+
+        # w = observation.get_weather()
         # Connect to DB
         cnx = mysql.connector.connect(user=c['mysql']['mysql_username'],
                                       password=c['mysql']['mysql_password'],
