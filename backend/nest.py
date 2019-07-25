@@ -88,7 +88,7 @@ class Nest:
         #print "res[shared][serial].keys", res["shared"][self.serial].keys()
 
     def temp_in(self, temp):
-        if (self.units == "F"):
+        if (self.units == "C"):
             return (temp - 32.0) / 1.8
         else:
             return temp
@@ -107,6 +107,14 @@ class Nest:
         allvars.update(device)
 
         return allvars
+
+    def show_target_temp(self):
+
+        temp = self.status["shared"][self.serial]["target_temperature"]
+        temp = self.temp_out(temp)
+
+        #print "%0.1f" % temp
+        return "%0.1f" % temp
 
     def show_curtemp(self):
         temp = self.status["shared"][self.serial]["current_temperature"]

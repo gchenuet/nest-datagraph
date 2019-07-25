@@ -11,11 +11,16 @@ services:
       MYSQL_PASSWORD: n3st_d4t4gr4ph
       MYSQL_DATABASE: nest_datagraph
     restart: always
+
   nestdatagraph:
     build:
       context: .
+      args:
+        TZ: America/Los_Angeles
+    volumes:
+      - ./frontend/conf:/opt/nest-datagraph/frontend/conf
     ports:
-      - 80:8000
+      - 8080:80
     links:
       - mariadb:mariadb
     environment:
@@ -28,3 +33,4 @@ services:
     depends_on:
       - mariadb
     restart: on-failure
+    

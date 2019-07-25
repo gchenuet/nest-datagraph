@@ -41,11 +41,18 @@ initialize_system() {
   crudini --set --existing /opt/nest-datagraph/frontend/conf/settings.ini mysql mysql_password "${DB_PASSWORD}"
 }
 
+poller_conf() {
+  echo "Running Nest data poller 1st start ..."
+  /usr/bin/python /opt/nest-datagraph/backend/poller.py
+  touch /etc/crontab /etc/cron.*/*
+  service cron start
+}
 
 start_system() {
   initialize_system
   check_database_connection
   init_mysqldb
+  poller_conf
   echo "Starting Nest Datagraph! ..."
   /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
 }

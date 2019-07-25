@@ -23,7 +23,7 @@ Feel free to create a pull request, open an issue or fork it !
 ### Prerequisite
 
 * [Nest](https://nest.com) Account
-* [OpenWeatherMap](http://openweathermap.org/) API Key
+* [DarkSky](https://darksky.net/dev/register) API Key (It's Free)
 
 For Docker version:
 * [Docker](https://docs.docker.com/engine/installation/)
@@ -36,8 +36,9 @@ If you want to use Nest Datagraph with Docker, please follow these steps:
 * Fill the `frontend/conf/settings.ini` file with your configuration:
     * `timezone` - Your timezone (Ex: 'Europe/Paris')
     * `units` - Choose your temperature units (C or F)
-    * `owm_id` - OpenWeatherMap API Key
-    * `owm_city_id` - Your city ID (without quote, e.g: 2988507)
+    * `api_key` - DarkSky API Key
+    * `lat` - Latitude
+	* `long` - Longitude
     * `nest_username` - Nest login
     * `nest_password` - Nest password
     * `nest_sn` - Nest Thermostat serial number
@@ -59,6 +60,10 @@ If you want to use Nest Datagraph with Docker, please follow these steps:
 * Run Project
 	```
 	docker-compose up -d
+	```
+* Do both build and run in one command:
+	```
+	docker-compose -f "docker-compose.yml" up -d --build
 	```
 
 ### Classic Setup

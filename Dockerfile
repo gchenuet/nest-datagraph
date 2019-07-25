@@ -1,5 +1,5 @@
 FROM debian:jessie-slim
-MAINTAINER Guillaume Chenuet <guillaume@chenuet.fr>
+LABEL MAINTAINER Guillaume Chenuet <guillaume@chenuet.fr>
 
 # Update base image & install packages
 RUN apt-get update && apt-get install -y \
@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     python-dev \
     python-pip \
-    crudini
+    crudini \
+    cron \
+    git
 
 # Tweak nginx config
 RUN sed -i -e"s/worker_processes  1/worker_processes 5/" /etc/nginx/nginx.conf && \
@@ -41,6 +43,11 @@ RUN rm -f /etc/nginx/sites-available/default
 ADD setup/nginx/nest-datagraph.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
+# Timezone
+ARG TZ
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Copy project
 RUN mkdir /opt/nest-datagraph
 ADD . /opt/nest-datagraph/
@@ -50,7 +57,8 @@ ADD setup/requirements.txt setup/requirements.txt
 RUN pip install -r setup/requirements.txt
 
 # Create crontab
-ADD setup/docker/crontab /etc/cron.hourly/nest-datagraph
+ADD setup/docker/crontab /etc/cron.d/nest-datagraph
+RUN chmod 0644 /etc/cron.d/nest-datagraph
 
 # Supervisor Config
 ADD setup/docker/supervisord.conf /etc/supervisor/supervisord.conf

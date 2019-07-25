@@ -1,1 +1,1 @@
-/usr/bin/python /opt/nest-datagraph/backend/poller.py
+*/5 * * * * root /usr/bin/python /opt/nest-datagraph/backend/poller.py
